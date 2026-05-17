@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
-module.exports = { env: { NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000' } }
-/** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'standalone',
+  // Si tenías otras opciones, agrégalas aquí (por ejemplo, reactStrictMode, etc.)
+  // Ejemplo: reactStrictMode: true,
 };
 
 module.exports = nextConfig;

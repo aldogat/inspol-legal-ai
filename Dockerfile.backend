@@ -1,6 +1,9 @@
 FROM python:3.11-slim
 WORKDIR /app
+
 COPY backend/requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt gunicorn
+RUN pip install --no-cache-dir -r requirements.txt gunicorn uvicorn
+
 COPY backend/ .
-CMD gunicorn app.main:app --bind "0.0.0.0:$PORT"
+
+CMD ["gunicorn", "app.main:app", "--bind", "0.0.0.0:$PORT", "--worker-class", "uvicorn.workers.UvicornWorker"]
