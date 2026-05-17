@@ -9,13 +9,8 @@ RUN yarn build
 FROM node:20-alpine AS runner
 WORKDIR /app
 ENV NODE_ENV=production
-
-# Crear carpeta public vacía para evitar error de copia
 RUN mkdir -p public
-
-# Copiar los artefactos de construcción
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
-
 EXPOSE $PORT
 CMD ["sh", "-c", "node server.js --port $PORT"]
