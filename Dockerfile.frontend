@@ -1,30 +1,15 @@
-# Etapa de construcción
 FROM node:20-alpine AS builder
 WORKDIR /app
-
-# Copiar archivos de dependencias
 COPY frontend/package.json frontend/yarn.lock* ./
 RUN yarn install --frozen-lockfile
-
-# Copiar el resto del código y construir la aplicación
 COPY frontend/ .
 RUN yarn build
 
-# Etapa de producción
 FROM node:20-alpine AS runner
 WORKDIR /app
 ENV NODE_ENV=production
-
-# Crear la carpeta 'public' vacía para evitar errores de copia
 RUN mkdir -p public
-
-# Copiar los artefactos de la construcción en modo 'standalone'
-# Este modo es necesario para que Next.js genere el archivo 'server.js'
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
-
-# Exponer el puerto que usará la aplicación
 EXPOSE $PORT
-
-# 🚀 Comando CORREGIDO: Usa la variable de entorno $PORT para que el servidor escuche en el puerto dinámico de Render
-CMD ["/bin/sh", "-c", "node server.js -p $PORT"]
+CMD ["sh", "-c", "node server.js --port $PORT"]
