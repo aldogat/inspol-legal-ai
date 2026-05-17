@@ -6,4 +6,4 @@ RUN pip install --no-cache-dir -r requirements.txt gunicorn uvicorn
 
 COPY backend/ .
 
-CMD ["gunicorn", "app.main:app", "--bind", "0.0.0.0:$PORT", "--worker-class", "uvicorn.workers.UvicornWorker"]
+CMD ["/bin/sh", "-c", "gunicorn app.main:app --bind 0.0.0.0:$PORT --worker-class uvicorn.workers.UvicornWorker"]
