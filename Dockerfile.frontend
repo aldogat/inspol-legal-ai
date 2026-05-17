@@ -13,5 +13,4 @@ RUN mkdir -p public
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 EXPOSE $PORT
-# Comando corregido: bind a 0.0.0.0 y usa el puerto de Render
 CMD ["sh", "-c", "node server.js -b 0.0.0.0 -p $PORT"]
