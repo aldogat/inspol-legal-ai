@@ -1,16 +1,35 @@
+# Etapa de construcción
 FROM node:20-alpine AS builder
 WORKDIR /app
+
+# Copiar archivos de dependencias
 COPY frontend/package.json frontend/yarn.lock* ./
 RUN yarn install --frozen-lockfile
+
+# Copiar el resto del código
 COPY frontend/ .
+
+# --- PASO CLAVE: Crear el archivo .env.production con la variable ---
+# Esto fuerza la inyección de la variable en tiempo de construcción
+RUN echo "NEXT_PUBLIC_API_URL=https://inspol-legal-ai-backend.onrender.com" > .env.production
+
+# Construir la aplicación
 RUN yarn build
 
+# Etapa de producción
 FROM node:20-alpine AS runner
 WORKDIR /app
 ENV NODE_ENV=production
-ENV HOSTNAME=0.0.0.0
+
+# Crear la carpeta 'public' vacía para evitar errores de copia
 RUN mkdir -p public
+
+# Copiar los artefactos de la construcción en modo 'standalone'
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
+
+# Exponer el puerto
 EXPOSE $PORT
-CMD ["sh", "-c", "node server.js --hostname 0.0.0.0 --port $PORT"]
+
+# Comando para iniciar la aplicación
+CMD ["sh", "-c", "node server.js --port $PORT"]
