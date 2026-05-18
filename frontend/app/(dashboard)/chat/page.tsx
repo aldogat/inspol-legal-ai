@@ -7,9 +7,9 @@ export default function ChatPage() {
     { role: "assistant", content: "👋 Hola, soy tu copiloto jurídico. Puedes preguntarme o adjuntar un documento/audio para que lo analice." }
   ]);
   const [input, setInput] = useState("");
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
-  const fileInputRef = useRef(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleSend = async () => {
     if (!input.trim() && !file) return;
@@ -50,11 +50,11 @@ export default function ChatPage() {
     }
   };
 
-  const handleFileChange = (e) => {
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files?.[0]) setFile(e.target.files[0]);
   };
 
-  const handleDrop = (e) => {
+  const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
     if (e.dataTransfer.files?.[0]) setFile(e.dataTransfer.files[0]);
   };
