@@ -1,4 +1,5 @@
-import API from '@/lib/api';"use client";
+import API from '@lib/api';
+"use client";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";

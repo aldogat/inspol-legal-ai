@@ -1,4 +1,5 @@
-import API from '@/lib/api';"use client";
+import API from '@lib/api';
+"use client";
 import { useEffect, useState, useRef } from "react";
 import { apiFetch } from "@/app/lib/api";
 import { Trash2, Send } from "lucide-react";

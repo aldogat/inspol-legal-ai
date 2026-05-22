@@ -1,4 +1,5 @@
-import API_BASE from '@/lib/api';"use client";
+import API_BASE from '@lib/api';
+"use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { FileSpreadsheet, FileText, Download } from "lucide-react";

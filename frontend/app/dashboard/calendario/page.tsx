@@ -1,4 +1,5 @@
-import API from '@/lib/api';"use client";
+import API from '@lib/api';
+"use client";
 import { useEffect, useState, useCallback } from "react";
 import { Calendar, momentLocalizer, Views } from "react-big-calendar";
 import moment from "moment";
