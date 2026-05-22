@@ -1,0 +1,33 @@
+/* Ajustes para el calendario en tema oscuro */
+.rbc-calendar {
+  background-color: transparent;
+  color: white;
+}
+.rbc-toolbar button {
+  color: white !important;
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+}
+.rbc-toolbar button:hover {
+  background-color: #334155 !important;
+}
+.rbc-toolbar button.rbc-active {
+  background-color: #3b82f6 !important;
+}
+.rbc-header {
+  background-color: #0f172a;
+  color: #94a3b8;
+  padding: 8px;
+}
+.rbc-off-range-bg {
+  background-color: #0f172a;
+}
+.rbc-today {
+  background-color: #1e3a5f !important;
+}
+.rbc-event {
+  border-radius: 4px;
+}
+.rbc-show-more {
+  color: #3b82f6;
+}
