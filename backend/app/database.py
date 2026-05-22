@@ -6,13 +6,12 @@ import os
 load_dotenv()
 raw_url = os.getenv("DATABASE_URL", "postgresql://postgres:postgres@localhost:5432/inspol_db")
 
-# Convertir automáticamente la URL de Render (postgres:// o postgresql://) a asyncpg
+# Transformar la URL de Render (postgres:// o postgresql://) a asyncpg
 if raw_url.startswith("postgres://"):
     DATABASE_URL = raw_url.replace("postgres://", "postgresql+asyncpg://", 1)
 elif raw_url.startswith("postgresql://"):
     DATABASE_URL = raw_url.replace("postgresql://", "postgresql+asyncpg://", 1)
 else:
-    # Si la URL ya incluye el driver o es SQLite, la dejamos como está
     DATABASE_URL = raw_url
 
 engine = create_async_engine(DATABASE_URL, echo=False)
