@@ -15,11 +15,16 @@ class Settings(BaseSettings):
     BACKEND_CORS_ORIGINS: List[str] = [
         "http://localhost:3000",
         "http://localhost:8000",
-        "https://inspol-legal-ai-frontend-final.onrender.com",
-        "https://inspol-legal-ai-frontend.onrender.com",
     ]
+
     class Config:
         env_file = ".env"
         case_sensitive = True
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        env_origins = os.getenv("BACKEND_CORS_ORIGINS")
+        if env_origins:
+            self.BACKEND_CORS_ORIGINS = [origin.strip() for origin in env_origins.split(",")]
 
 settings = Settings()

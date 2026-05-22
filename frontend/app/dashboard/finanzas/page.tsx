@@ -1,11 +1,10 @@
-"use client";
+import API from '@/lib/api';"use client";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 import { Pencil, Trash2, X, Plus, TrendingUp, TrendingDown, DollarSign } from "lucide-react";
 import { apiFetch } from "@/app/lib/api";
 
-const API = "http://localhost:8000/api/v1";
 
 export default function FinanzasPage() {
   const [transacciones, setTransacciones] = useState([]);

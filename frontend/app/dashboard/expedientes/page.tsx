@@ -1,4 +1,4 @@
-"use client";
+import API from '@/lib/api';"use client";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
@@ -7,7 +7,6 @@ import { apiFetch } from "@/app/lib/api";
 import toast from "react-hot-toast";
 import { TableSkeleton } from "@/app/components/Skeleton";
 
-const API = "http://localhost:8000/api/v1";
 const PAGE_SIZE = 10;
 
 export default function ExpedientesPage() {

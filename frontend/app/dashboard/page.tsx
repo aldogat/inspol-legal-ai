@@ -1,4 +1,4 @@
-"use client";
+import API from '@/lib/api';"use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -8,7 +8,6 @@ import moment from "moment";
 import "moment/locale/es";
 import { apiFetch } from "@/app/lib/api";
 
-const API = "http://localhost:8000/api/v1";
 
 const CHART_COLORS = ["#059669", "#b45309", "#7c3aed", "#dc2626"];
 const LINE_COLOR = "#059669";

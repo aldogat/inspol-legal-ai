@@ -1,4 +1,4 @@
-"use client";
+import API from '@/lib/api';"use client";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
@@ -6,7 +6,6 @@ import { Pencil, Trash2, X, AlertTriangle, Sparkles, Upload } from "lucide-react
 import { apiFetch } from "@/app/lib/api";
 import toast from "react-hot-toast";
 
-const API = "http://localhost:8000/api/v1";
 
 export default function ContratosPage() {
   const [contratos, setContratos] = useState([]);

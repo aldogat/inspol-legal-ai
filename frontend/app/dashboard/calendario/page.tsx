@@ -1,4 +1,4 @@
-"use client";
+import API from '@/lib/api';"use client";
 import { useEffect, useState, useCallback } from "react";
 import { Calendar, momentLocalizer, Views } from "react-big-calendar";
 import moment from "moment";
@@ -12,7 +12,6 @@ import "./calendario.css";
 moment.locale("es");
 const localizer = momentLocalizer(moment);
 
-const API = "http://localhost:8000/api/v1";
 
 export default function CalendarioPage() {
   const [eventos, setEventos] = useState([]);

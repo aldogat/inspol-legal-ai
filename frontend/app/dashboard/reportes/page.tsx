@@ -1,10 +1,10 @@
-"use client";
+import API_BASE from '@/lib/api';"use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { FileSpreadsheet, FileText, Download } from "lucide-react";
 import { apiFetch } from "@/app/lib/api";
 
-const API = "http://localhost:8000/api/v1/reportes";
+const API = `${API_BASE}/reportes`;
 
 export default function ReportesPage() {
   const [tipo, setTipo] = useState("expedientes");
